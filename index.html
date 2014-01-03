@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html  ng-app="todoApp">
+  <head>
+    <title>My Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="./public/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="./public/css/index.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Project name</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container" ng-controller="TodoController" ng-cloak>
+
+      <div class="starter-template">
+        <h1>Hello, Welcome to My Home Page</h1>
+        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a classic todo application!</p>
+      </div>
+      
+      <h1>The Classic Todo List</h1>
+      <p id="empty" ng-hide="todos.length || !loaded">You don't have any todos! Add one now:</p>
+      <ul id="todos" class="unstyled">
+          <li ng-repeat="todo in todos">
+              <label class="checkbox">
+                  <input type="checkbox" ng-model="todo.completed" ng-change="changeCompleted(todo)" />
+                  {{todo.title}}
+              </label>
+          </li>
+      </ul>
+      <form class="form-inline">
+          <input id="todo-title" type="text" ng-model="newTodoTitle" />
+          <button id="add-btn" class="btn btn-success" ng-click="addTodo(newTodoTitle)">Add</button>
+      </form>
+      <p>
+        <a href id="remove-completed-btn" ng-click="removeCompletedItems()">Remove completed items</a>
+      </p>
+
+    </div><!-- /.container -->
+    
+    <!-- JavaScript plugins (requires jQuery) -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="./public/js/bootstrap.min.js"></script>
+    <script src="./public/js/todo.js"></script>
+  </body>
+</html>
