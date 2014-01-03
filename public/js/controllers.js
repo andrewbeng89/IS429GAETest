@@ -12,6 +12,8 @@ controller('MyCtrl1', [function() {
 	$('#view2').addClass('active');
 }])
 .controller('TodoController', function($scope, $http) {
+    $('#navbar').children('.active').removeClass('active');
+    $('#todos').addClass('active');
 
     $scope.todos = [];
     $scope.loaded = false;
