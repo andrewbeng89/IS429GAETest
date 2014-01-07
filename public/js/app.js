@@ -1,5 +1,5 @@
 'use strict';
-
+var firebase_backend = true;
 
 // Declare app level module which depends on filters, and services
 angular.module('myApp', [
@@ -12,6 +12,6 @@ angular.module('myApp', [
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
   $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
-  $routeProvider.when('/todos', {templateUrl: 'partials/todos.html', controller: 'TodoController'});
+  $routeProvider.when('/todos', {templateUrl: 'partials/todos.html', controller: (firebase_backend) ? 'TodoFireController' : 'TodoController'});
   $routeProvider.otherwise({redirectTo: '/view1'});
 }]);
