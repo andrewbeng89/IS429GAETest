@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html lang="en" ng-app="todoApp">
+<html lang="en" ng-app="myApp">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,16 +14,7 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 
     <!-- Custom styles for this template -->
-    <style>
-      /* app css stylesheet */
-      body {
-        padding-top: 50px;
-      }
-      .starter-template {
-        padding: 40px 15px;
-        text-align: center;
-      }
-    </style>
+    <link rel="stylesheet" href="./css/app.css"/>
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -32,10 +24,13 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
     <script src="//cdn.firebase.com/js/client/1.0.2/firebase.js"></script>
     <script src="//cdn.firebase.com/js/simple-login/1.2.1/firebase-simple-login.js"></script>
     <script src="//cdn.firebase.com/libs/angularfire/0.6.0/angularfire.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
   </head>
 
   <body>
@@ -56,18 +51,13 @@
             <li id="todos" class="active"><a href="#/todos">Todos</a></li>
             <li id="view1"><a href="#/view1">View 1</a></li>
             <li id="view2"><a href="#/view2">View 2</a></li>
-            <li id="test"><a href="./pages/test.html">test</a></li>
+            <li id="test"><a href="./partials/test.html">Test</a></li>
           </ul>
-          <ul class="nav navbar-nav navbar-right" ng-controller="LoginController">
+          <ul class="nav navbar-nav navbar-right" ng-controoler="TodoFireController">
             <li ng-show="auth.user">
-              <a href="">Hello {{auth.user.name}}!</a>
+              {{auth.user.name}} | <a href="" ng-click="auth.$logout()">Logout</a>
             </li>
-            <li ng-show="auth.user">
-              <a href="" ng-click="auth.$logout()">Logout</a>
-            </li>
-            <li>
-              <a href="" ng-hide="auth.user" ng-click="auth.$login('facebook')">Login</a>
-            </li>
+            <li><a href="" ng-hide="auth.user" ng-click="auth.$login('facebook')">Login</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -78,33 +68,18 @@
       <div class="starter-template">
         <h1>Bootstrap starter template</h1>
       </div>
-      <div ng-controller="TodoController">
-        <h1>The Classic Todo List</h1>
-        <p id="empty" ng-hide="(todos.$getIndex()) || !loaded">You don't have any todos! Add one now:</p>
-        <ul id="todos" class="unstyled">
-            <li ng-repeat="todo in todos">
-                <label class="checkbox">
-                    <input type="checkbox" ng-model="todo.completed" ng-change="changeCompleted(todo)" />
-                    {{todo.title}}
-                </label>
-            </li>
-        </ul>
-        <form class="form-inline">
-            <input id="todo-title" type="text" ng-model="newTodoTitle" />
-            <button id="add-btn" class="btn btn-success" ng-click="addTodo(newTodoTitle)">Add</button>
-        </form>
-        <p>
-          <a href id="remove-completed-btn" ng-click="removeCompletedItems()">Remove completed items</a>
-        </p>
-      </div>
+      <div ng-view></div>
+      <div>Angular testing seed app: v<span app-version></span></div>
     </div><!-- /.container -->
 
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <script src="./js/app.js"></script>
+    <script src="./js/services.js"></script>
+    <script src="./js/controllers.js"></script>
+    <script src="./js/filters.js"></script>
+    <script src="./js/directives.js"></script>
   </body>
 </html>

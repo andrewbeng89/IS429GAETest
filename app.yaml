@@ -22,10 +22,10 @@ handlers:
   static_files: public/js/\1
   upload: public/js/(.*\.js)
 
-- url: /partials/(.*\.html)
+- url: /pages/(.*\.html)
   mime_type: text/html
-  static_files: public/partials/\1
-  upload: public/partials/(.*\.html)
+  static_files: public/pages/\1
+  upload: public/pages/(.*\.html)
 
 libraries:
 - name: PIL
