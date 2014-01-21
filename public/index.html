@@ -80,7 +80,7 @@
       </div>
       <div ng-controller="TodoController">
         <h1>The Classic Todo List</h1>
-        <p id="empty" ng-hide="(todos.$getIndex()) || !loaded">You don't have any todos! Add one now:</p>
+        <p id="empty" ng-hide="(todos.length) || !loaded">You don't have any todos! Add one now:</p>
         <ul id="todos" class="unstyled">
             <li ng-repeat="todo in todos">
                 <label class="checkbox">
