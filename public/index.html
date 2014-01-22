@@ -73,12 +73,15 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container" ng-controller="TodoController">
 
       <div class="starter-template">
         <h1>Bootstrap starter template</h1>
       </div>
-      <div ng-controller="TodoController">
+      <div ng-hide="auth.user">
+        <h1>Please login to view the Classic Todo List app!</h1>
+      </div>
+      <div ng-show="auth.user">
         <h1>The Classic Todo List</h1>
         <p id="empty" ng-hide="(todos.length) || !loaded">You don't have any todos! Add one now:</p>
         <ul id="todos" class="unstyled">
